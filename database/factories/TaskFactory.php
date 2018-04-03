@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(App\Task::class, function (Faker $faker) {
     $users = \App\User::select('name')->where('role', 'junior')->get();
     foreach ($users as $key => $user) {
         $worker[] = $user->name;
