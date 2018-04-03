@@ -29,7 +29,14 @@
                   <td>{{$user->email}}</td>
                   <td>{{$user->role}}</td>
                   <td class="text-right">
-                      <a class="btn btn-outline-primary btn-sm" href="{{route('admin.user.edit', $user)}}">Edit</a>
+                      <form action="{{route('admin.user.destroy', $user)}}" method="post">
+                        {{ method_field('delete') }}
+                        {{ csrf_field() }}
+
+                        <a class="btn btn-outline-primary btn-sm" href="{{route('admin.user.edit', $user)}}">Edit</a>
+
+                        <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
+                      </form>
                   </td>
                 </tr>
               @empty
