@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Маршрут для главной страницы
+Route::get('/', 'MainController@index');
 
 /**
  * Группа маршрутов для панели администратора
