@@ -18,7 +18,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        // Получение списка пользователей из таблицы users с помощью модели User
+        $users = User::paginate(10);
+        return view('admin.users.index', [
+            'users' => $users
+        ]);
     }
 
     /**
