@@ -83,7 +83,11 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        //
+        $workers = User::where('role', 'junior')->get();
+        return view('admin.tasks.edit', [
+            'task' => $task,
+            'workers' => $workers,
+        ]);
     }
 
     /**
