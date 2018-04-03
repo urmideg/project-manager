@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Task;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 
 class TaskController extends Controller
 {
@@ -15,7 +17,15 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+        $user = \Auth::user();
+        if (Gate::allows('senior')) {
+            $tasks = Task::paginate(10);
+        } else {
+            $tasks = Task::userTask($user->name)->where('status', 'Реализация')->paginate(10);
+        }
+        return view('admin.tasks.index', [
+            'tasks' => $tasks
+        ]);
     }
 
     /**
