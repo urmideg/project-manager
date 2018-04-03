@@ -34,9 +34,12 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                          <a class="nav-link" href="{{ route('admin.user.index') }}">Пользователи</a>
-                        </li>  
+                        {{-- Пункт меню только для ведущего программиста --}}
+                        @can ('senior')
+                            <li class="nav-item">
+                              <a class="nav-link" href="{{ route('admin.user.index') }}">Пользователи</a>
+                            </li>
+                        @endcan
                     </ul>
 
                     <!-- Right Side Of Navbar -->

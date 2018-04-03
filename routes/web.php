@@ -21,8 +21,11 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth'] ], function () {
     // маршрут для главной старницы панели администратора
     Route::get('/', 'DashboardController@index')->name('admin.index');
-    // маршрут для ресурсного контроллера
-    Route::resource('/user', 'UserController', ['as' => 'admin']);
+    // маршруты только для ведущего программиста
+    Route::group(['middleware' => ['can:senior'] ], function () {
+        // маршрут для ресурсного контроллера
+        Route::resource('/user', 'UserController', ['as' => 'admin']);
+    });
 });
 
 Auth::routes();
