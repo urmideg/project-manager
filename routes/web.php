@@ -26,6 +26,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
         // маршрут для ресурсного контроллера
         Route::resource('/user', 'UserController', ['as' => 'admin']);
     });
+    // маршрут для ресурсного контроллера TaskController
+    Route::resource('/task', 'TaskController', ['as' => 'admin']);
 });
 
 Auth::routes();
