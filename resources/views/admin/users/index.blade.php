@@ -7,6 +7,9 @@
 
         <h2 class="card-header float-left">
           Список пользователей
+          <a href="{{route('admin.user.create')}}" class="btn btn-success float-right">
+            Создать пользователя
+          </a>
         </h2>
 
         <div class="card-body">
