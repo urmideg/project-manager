@@ -31,6 +31,7 @@
                   <td>{{$task->status}}</td>
                   <td>{{$task->worker}}</td>
                   <td class="text-right">
+                      <a class="btn btn-outline-primary btn-sm" href="{{route('admin.task.edit', $task)}}">Edit</a>
                   </td>
                 </tr>
               @empty
