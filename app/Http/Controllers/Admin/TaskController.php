@@ -35,7 +35,14 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        if (Gate::allows('senior')) {
+            $workers = User::where('role', 'junior')->get();
+            return view('admin.tasks.create', [
+                'task' => [],
+                'workers' => $workers,
+            ]);
+        }
+        return redirect()->route('admin.task.index');
     }
 
     /**
