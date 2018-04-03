@@ -99,7 +99,20 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
+        if (Gate::allows('senior')) {
+            $validator = $request->validate([
+                'name' => 'required|string|max:255',
+                'description' => 'required|string|max:255',
+            ]);
+
+            $task->name = $request['name'];
+            $task->description = $request['description'];
+            $task->worker = $request['worker'];
+        }
+        $task->status = $request['status'];
+        $task->save();
+
+        return redirect()->route('admin.task.index');
     }
 
     /**
