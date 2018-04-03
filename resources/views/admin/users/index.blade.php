@@ -29,6 +29,7 @@
                   <td>{{$user->email}}</td>
                   <td>{{$user->role}}</td>
                   <td class="text-right">
+                      <a class="btn btn-outline-primary btn-sm" href="{{route('admin.user.edit', $user)}}">Edit</a>
                   </td>
                 </tr>
               @empty
