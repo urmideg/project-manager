@@ -53,7 +53,15 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (Gate::allows('senior')) {
+            $validator = $request->validate([
+                'name' => 'required|string|max:255',
+                'description' => 'required|string|max:255',
+            ]);
+
+            Task::create($request->all());
+        }
+        return redirect()->route('admin.task.index');
     }
 
     /**
