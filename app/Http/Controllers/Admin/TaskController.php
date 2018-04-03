@@ -123,6 +123,9 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        if (Gate::allows('senior')) {
+            $task->delete();
+        }
+        return redirect()->route('admin.task.index');
     }
 }
