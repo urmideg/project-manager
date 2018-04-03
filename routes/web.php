@@ -19,7 +19,8 @@ Route::get('/', function () {
  * Группа маршрутов для панели администратора
  */
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth'] ], function () {
-
+    // маршрут для главной старницы панели администратора
+    Route::get('/', 'DashboardController@index')->name('admin.index');
 });
 
 Auth::routes();
