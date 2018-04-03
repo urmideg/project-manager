@@ -7,6 +7,11 @@
 
         <h2 class="card-header float-left">
           Список задач
+          @can ('senior')
+            <a href="{{route('admin.task.create')}}" class="btn btn-success float-right">
+              Добавить задачу
+            </a>
+          @endcan
         </h2>
 
         <div class="card-body">
