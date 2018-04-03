@@ -25,6 +25,19 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        // Определение является ли пользователь ведущим программистом
+        Gate::define('senior', function ($user) {
+            if ($user->role == 'senior') {
+                return true;
+            }
+            return false;
+        });
+        // Определение является ли пользователь программистом
+        Gate::define('junior', function ($user) {
+            if ($user->role == 'junior') {
+                return true;
+            }
+            return false;
+        });
     }
 }
