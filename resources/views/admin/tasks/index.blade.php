@@ -31,7 +31,18 @@
                   <td>{{$task->status}}</td>
                   <td>{{$task->worker}}</td>
                   <td class="text-right">
+                      @can ('senior')
+                        <form action="{{route('admin.task.destroy', $task)}}" method="post">
+                          {{ method_field('delete') }}
+                          {{ csrf_field() }}
+                      @endcan
+
                       <a class="btn btn-outline-primary btn-sm" href="{{route('admin.task.edit', $task)}}">Edit</a>
+
+                      @can ('senior')
+                        <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
+                       </form>
+                     @endcan
                   </td>
                 </tr>
               @empty
