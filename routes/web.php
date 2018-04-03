@@ -15,6 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/**
+ * Группа маршрутов для панели администратора
+ */
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth'] ], function () {
+
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
